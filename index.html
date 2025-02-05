@@ -32,6 +32,7 @@
         <br />
 
         <button id="convert-btn">Konvertēt</button>
+        <p id="result"></p>
     </div>
     <script>
         const toCurrencyInput = document.getElementById("to-currency");
@@ -68,7 +69,7 @@
                     break;
             }
 
-            result = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+            result.innerHTML = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
         }
 
         btn.addEventListener("click", handleClick);
