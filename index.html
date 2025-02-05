@@ -33,6 +33,7 @@
 
         <button id="convert-btn">Konvertēt</button>
         <p id="result"></p>
+        <p id="history"></p>
     </div>
     <script>
         const toCurrencyInput = document.getElementById("to-currency");
@@ -40,6 +41,8 @@
         const btn = document.getElementById("convert-btn");
         const amountInput = document.getElementById("amount");
         const result = document.getElementById("result");
+        const history1 = document.getElementById("history");
+        let historyArray = [];
 
         function handleClick() {
             const fromCurrency = fromCurrencyInput.value;
@@ -49,11 +52,13 @@
             if (InputCheck(amount)) {
                 CalculateCurrency(fromCurrency, toCurrency, amount)
             };
+            history1.innerHTML = historyArray
         }
 
         function InputCheck(amount) {
             if (isNaN(amount) || amount <= 0) {
                 result.innerHTML = "Ievadi derīgu daudzumu";
+                historyArray.push("<br> Ievadi derīgu daudzumu <br>");
                 return false
             }
             else {
@@ -82,6 +87,7 @@
             }
 
             result.innerHTML = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`
+            historyArray.push(`<br>${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency} <br>`);
         }
 
         btn.addEventListener("click", handleClick);
