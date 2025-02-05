@@ -58,6 +58,7 @@
         function InputCheck(amount) {
             if (isNaN(amount) || amount <= 0) {
                 result.innerHTML = "Ievadi derīgu daudzumu";
+                result.style.color = "red";
                 historyArray.push("<br> Ievadi derīgu daudzumu <br>");
                 return false
             }
@@ -87,6 +88,7 @@
             }
 
             result.innerHTML = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`
+            result.style.color = "green";
             historyArray.push(`<br>${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency} <br>`);
         }
 
