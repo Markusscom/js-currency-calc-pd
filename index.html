@@ -47,26 +47,7 @@
             const amount = parseFloat(amountInput.value);
 
             if (InputCheck(amount)) {
-                let convertedAmount = "";
-                switch (fromCurrency) {
-                    case "USD":
-                        convertedAmount =
-                            amount * { EUR: 0.85, GBP: 0.75, USD: 1 }[toCurrency];
-                        break;
-                    case "EUR":
-                        convertedAmount =
-                            amount * { USD: 1.18, GBP: 0.88, EUR: 1 }[toCurrency];
-                        break;
-                    case "GBP":
-                        convertedAmount =
-                            amount * { USD: 1.33, EUR: 1.14, GBP: 1 }[toCurrency];
-                        break;
-
-                    default:
-                        break;
-                }
-
-                result.innerHTML = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`
+                CalculateCurrency(fromCurrency, toCurrency, amount)
             };
         }
 
@@ -78,6 +59,29 @@
             else {
                 return true
             }
+        }
+
+        function CalculateCurrency(fromCurrency, toCurrency, amount) {
+            let convertedAmount = "";
+            switch (fromCurrency) {
+                case "USD":
+                    convertedAmount =
+                        amount * { EUR: 0.85, GBP: 0.75, USD: 1 }[toCurrency];
+                    break;
+                case "EUR":
+                    convertedAmount =
+                        amount * { USD: 1.18, GBP: 0.88, EUR: 1 }[toCurrency];
+                    break;
+                case "GBP":
+                    convertedAmount =
+                        amount * { USD: 1.33, EUR: 1.14, GBP: 1 }[toCurrency];
+                    break;
+
+                default:
+                    break;
+            }
+
+            result.innerHTML = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`
         }
 
         btn.addEventListener("click", handleClick);
